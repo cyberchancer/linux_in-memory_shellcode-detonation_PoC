@@ -18,7 +18,7 @@ A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shel
 - Memory Allocation (`mmap`): requests a private, anonymous RWX region for payload staging.  
 - Payload Injection: copies raw shellcode from a generated header (`shellcode.h`) into the allocated buffer.  
 - Direct Execution: casts buffer to a function pointer and transfers execution to shellcode.  
-- Minimal Syscalls: only `mmap`, `memcpy`, and invocation—no dynamic linking beyond standard C library.
+- Minimal Syscalls: only `mmap`, `memcpy`, and invocation, no dynamic linking beyond standard C library.
 
 **Internal Components**  
 ```
