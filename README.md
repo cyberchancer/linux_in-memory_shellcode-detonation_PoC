@@ -77,5 +77,5 @@ A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shel
 - msfvenom documentation: https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit-Framework  
 - xxd(1) manual (hex dump utility): https://linux.die.net/man/1/xxd  
 - Executable space protection (NX bit) – https://en.wikipedia.org/wiki/Executable_space_protection  
-- MITRE ATT&CK® T1055 – Process Injection  
-- MITRE ATT&CK® T1564 – Hide Artifacts  
+- MITRE ATT&CK T1055 – Process Injection  - https://attack.mitre.org/techniques/T1055/
+- MITRE ATT&CK T1564 – Hide Artifacts  - https://attack.mitre.org/techniques/T1564/
